@@ -13,7 +13,7 @@ const Loading = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#000', // Optional background
+        backgroundColor: '#000', 
         zIndex: 9999,
       }}
     >
@@ -23,7 +23,7 @@ const Loading = () => {
         loop
         muted
         style={{
-          width: '30%', // Adjust size as needed
+          width: '30%',
           maxWidth: '600px',
           borderRadius: '10px',
         }}

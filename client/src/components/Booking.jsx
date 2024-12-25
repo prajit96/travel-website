@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import { DatePicker, InputNumber, Button, message, Modal } from 'antd';
 import { useParams, useNavigate } from 'react-router-dom';
+import Navbar from './Navbar';
 
 const { RangePicker } = DatePicker;
 
@@ -54,7 +55,7 @@ const Booking = () => {
         adults,
         children,
       };
-      const response = await Axios.post('http://localhost:5000/api/bookings', bookingData, {
+      const response = await Axios.post('https://travel-website-backend-btfr.onrender.com/api/bookings', bookingData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -73,7 +74,9 @@ const Booking = () => {
   };
 
   return (
-    <div style={{ padding: '20px', maxWidth: '600px', margin: 'auto' }}>
+    <>
+    <Navbar/>
+    <div style={{ padding: '100px', maxWidth: '600px', margin: 'auto' }}>
       <h1>Book Your Tour</h1>
       <p>
         <strong>Tour ID:</strong> {id}
@@ -112,7 +115,7 @@ const Booking = () => {
 
       <Modal
         title="Confirm Your Booking"
-        visible={visible}
+        open={visible}
         onOk={handleConfirmBooking}
         onCancel={() => setVisible(false)}
         confirmLoading={loading}
@@ -132,6 +135,7 @@ const Booking = () => {
         <p>Are you sure you want to confirm this booking?</p>
       </Modal>
     </div>
+    </>
   );
 };
 

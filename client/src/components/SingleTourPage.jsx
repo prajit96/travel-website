@@ -16,20 +16,19 @@ import Rating from '@mui/material/Rating';
 import Navbar from './Navbar';
 
 export default function SingleTourPage() {
-  const { id } = useParams(); // Get the tour ID from the URL
-  const [tour, setTour] = useState(null); // State to hold the tour details
-  const [reviews, setReviews] = useState([]); // State to hold reviews
-  const [newReview, setNewReview] = useState({ rating: 0, comment: '' }); // State for new review
+  const { id } = useParams(); 
+  const [tour, setTour] = useState(null); 
+  const [reviews, setReviews] = useState([]); 
+  const [newReview, setNewReview] = useState({ rating: 0, comment: '' }); 
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch the tour details and reviews from the backend
     const fetchTourAndReviews = async () => {
       try {
-        const tourResponse = await axios.get(`http://localhost:5000/api/tours/${id}`);
+        const tourResponse = await axios.get(`https://travel-website-backend-btfr.onrender.com/api/tours/${id}`);
         setTour(tourResponse.data);
 
-        const reviewResponse = await axios.get(`http://localhost:5000/api/reviews/tour/${id}`);
+        const reviewResponse = await axios.get(`https://travel-website-backend-btfr.onrender.com/api/reviews/tour/${id}`);
         setReviews(reviewResponse.data);
       } catch (error) {
         console.error('Error fetching tour details or reviews:', error);
@@ -48,23 +47,22 @@ export default function SingleTourPage() {
   const handleReviewSubmit = async () => {
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/reviews`,
+        `https://travel-website-backend-btfr.onrender.com/api/reviews`,
         { tour: id, ...newReview },
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`, // Add auth token
+            Authorization: `Bearer ${localStorage.getItem('token')}`, 
           },
         }
       );
       setReviews((prevReviews) => [response.data.review, ...prevReviews]);
-      setNewReview({ rating: 0, comment: '' }); // Reset the form
+      setNewReview({ rating: 0, comment: '' }); 
     } catch (error) {
       console.error('Error submitting review:', error);
     }
   };
 
   if (loading) {
-    // Skeleton loading placeholders
     return (
       <Box sx={{ padding: '40px' }}>
         <Skeleton variant="rectangular" width="100%" height={400} sx={{ borderRadius: '10px' }} />
@@ -170,7 +168,7 @@ export default function SingleTourPage() {
           <Grid item xs={12} md={4}>
             <Card variant="outlined" sx={{ borderRadius: '10px', padding: '20px' }}>
               <CardContent>
-                {/* Price Information */}
+                
                 <Typography variant="h5" fontWeight="bold" color="primary" gutterBottom>
                   ${tour.price} / person
                 </Typography>
@@ -179,7 +177,6 @@ export default function SingleTourPage() {
                 </Typography>
                 <Divider sx={{ marginY: '20px' }} />
 
-                {/* Date Selection */}
                 <Typography variant="h6" fontWeight="bold" gutterBottom>
                   Select Date
                 </Typography>
@@ -214,7 +211,6 @@ export default function SingleTourPage() {
                   </Box>
                 </Box>
 
-                {/* Book Now Button */}
                 <Button
                   variant="contained"
                   color="primary"

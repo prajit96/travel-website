@@ -14,7 +14,6 @@ export default function Footer() {
     >
       <Container maxWidth="lg">
         <Grid container spacing={4}>
-          {/* About Section */}
           <Grid item xs={12} sm={4}>
             <Typography variant="h6" gutterBottom>
               About Us
@@ -23,8 +22,6 @@ export default function Footer() {
               We are a travel platform dedicated to providing the best travel experiences worldwide.
             </Typography>
           </Grid>
-
-          {/* Quick Links Section */}
           <Grid item xs={12} sm={4}>
             <Typography variant="h6" gutterBottom>
               Quick Links
@@ -44,8 +41,6 @@ export default function Footer() {
               </Link>
             </Box>
           </Grid>
-
-          {/* Social Media Section */}
           <Grid item xs={12} sm={4}>
             <Typography variant="h6" gutterBottom>
               Follow Us
@@ -86,8 +81,6 @@ export default function Footer() {
             </Box>
           </Grid>
         </Grid>
-
-        {/* Footer Bottom */}
         <Box sx={{ textAlign: 'center', marginTop: '2rem' }}>
           <Typography variant="body2">
             &copy; {new Date().getFullYear()} DreamTravel. All Rights Reserved.

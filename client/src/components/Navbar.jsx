@@ -48,8 +48,6 @@ const Navbar = () => {
           />
           Dream Travel
         </Typography>
-
-        {/* Navigation Buttons */}
         <Box sx={{ display: 'flex', gap: '15px' }}>
           <Button
             sx={{

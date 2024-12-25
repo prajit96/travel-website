@@ -32,7 +32,6 @@ const App = () => {
             <Route path="/tours" element={<TourPage />} />
             <Route path="/tours/:id" element={<SingleTourPage />} />
             <Route path="/booking/:id" element={<Booking />} />
-
           </Routes>
         </Router>
       )}

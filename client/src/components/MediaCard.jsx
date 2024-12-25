@@ -14,14 +14,13 @@ import { Link, useParams } from 'react-router-dom';
 export default function MediaCard() {
   const { id } = useParams();
   const [travels, setTravels] = useState([]);
-  const [loading, setLoading] = useState(true); // Loading state
-  const [error, setError] = useState(null); // Error state
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(null); 
 
-  // Fetch travel data from the backend
   useEffect(() => {
     const fetchTravels = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/tours');
+        const response = await axios.get('https://travel-website-backend-btfr.onrender.com/api/tours');
         setTravels(response.data);
       } catch (error) {
         console.error('Error fetching travels:', error);
@@ -35,7 +34,7 @@ export default function MediaCard() {
   }, [id]);
 
   if (loading) {
-    // Show skeletons while loading
+
     return (
       <Box display="flex" flexWrap="wrap" gap="16px" justifyContent="center">
         {Array.from(new Array(4)).map((_, index) => (
@@ -65,7 +64,7 @@ export default function MediaCard() {
         <Card key={travel._id} sx={{ maxWidth: 300, minWidth: 250 }}>
           <CardMedia
             sx={{ height: 150 }}
-            image={travel.images?.[0] || 'https://via.placeholder.com/150'} // Fallback image
+            image={travel.images?.[0] || 'https://via.placeholder.com/150'} 
             title={travel.title}
           />
           <CardContent>
@@ -80,7 +79,7 @@ export default function MediaCard() {
             <Button 
               size="small" 
               component={Link} 
-              to={`/tours/${travel._id}`} // Navigate to the single tour page
+              to={`/tours/${travel._id}`} 
             >
               ${travel.price}/per person
             </Button>
